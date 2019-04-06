@@ -1,0 +1,179 @@
+<<<<<<<<<<<<<<<<<<<<<<<  SoOp Description File  >>>>>>>>>>>>>>>>>>>>>>>
+****************************** 1km Grid ******************************
+0                             !  Longitude Reference [deg]
+-80                           !  Latitude Maximum [deg]
+80                            !  Latitude Minimum [deg]
+****************************** Soil Type *****************************
+0.1                           !  Reflectivity
+**********************************************************************
+******************************* Receivers ****************************
+**********************************************************************
+1                             !  Number of Receiver
+================================ Rx 0 ================================
+0                             !  SC Number Assignment for Rx 0
+1                             !  Number of SoOp Configurations
+------------------------------ MUOS ----------------------------------
+4                             !  Number of Specular Points
+SP1Alpha.ppm                  !  Sprite File Name SP
+370                           !  Rx Frequency [MHz]
+5000                          !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+290                           !  Noise Temperature Earth-View [k]
+**********************************************************************
+**************************** Transmitters ****************************
+**********************************************************************
+1                             !  Number of Transmitters Group
+============================= Tx 0 : MUOS ============================
+370                           !  Tx Frequency [MHz]
+26                            !  EIRP [dBW]
+
+
+
+============================= Tx 1 : Orbcomm =========================
+137                           !  Tx Frequency [MHz]
+7                             !  EIRP [dBW]
+============================= Tx 2 : GPS =========================
+1227.6                        !  Tx Frequency [MHz]
+17                            !  EIRP [dBW]
+
+
+
+------------------------------ ORBCOMM -------------------------------
+20                            !  Number of Specular Points
+SP2Alpha.ppm                  !  Sprite File Name SP
+137                           !  Rx Frequency [MHz]
+25                            !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+290                           !  Noise Temperature Earth-View [k]
+------------------------------ GPS -----------------------------------
+25                            !  Number of Specular Points
+SP3Alpha.ppm                  !  Sprite File Name SP
+1227.6                        !  Rx Frequency [MHz]
+10230                         !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+290                           !  Noise Temperature Earth-View [k]
+
+
+
+transmitter
+!  Transmitted power
+!  Transmitter antenna gain
+
+receiver
+!  Receiver antenna gain
+!  Coherent integration time
+!  electromagnetic wavelength of the signal
+
+
+
+================================ Rx 1 ================================
+1                             !  SC Number Assignment for Rx 1
+2                             !  Number of SoOp Configurations
+-------------------------------- MUOS --------------------------------
+4                             !  Number of Specular Points
+SP1Alpha.ppm                  !  Sprite File Name SP
+370                           !  Rx Frequency [MHz]
+5000                          !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+-------------------------------- ORBCOMM -----------------------------
+10                            !  Number of Specular Points
+SP2Alpha.ppm                  !  Sprite File Name SP
+137                           !  Rx Frequency [MHz]
+25                            !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+================================ Rx 2 ================================
+2                             !  SC Number Assignment for Rx 2
+2                             !  Number of SoOp Configurations
+-------------------------------- MUOS --------------------------------
+4                             !  Number of Specular Points
+SP1Alpha.ppm                  !  Sprite File Name SP
+370                           !  Rx Frequency [MHz]
+5000                          !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+-------------------------------- ORBCOMM -----------------------------
+10                            !  Number of Specular Points
+SP2Alpha.ppm                  !  Sprite File Name SP
+137                           !  Rx Frequency [MHz]
+25                            !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+================================ Rx 3 ================================
+3                             !  SC Number Assignment for Rx 3
+2                             !  Number of SoOp Configurations
+-------------------------------- MUOS --------------------------------
+4                             !  Number of Specular Points
+SP1Alpha.ppm                  !  Sprite File Name SP
+370                           !  Rx Frequency [MHz]
+5000                          !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+-------------------------------- ORBCOMM -----------------------------
+10                            !  Number of Specular Points
+SP2Alpha.ppm                  !  Sprite File Name SP
+137                           !  Rx Frequency [MHz]
+25                            !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+================================ Rx 4 ================================
+4                             !  SC Number Assignment for Rx 4
+2                             !  Number of SoOp Configurations
+-------------------------------- MUOS --------------------------------
+4                             !  Number of Specular Points
+SP1Alpha.ppm                  !  Sprite File Name SP
+370                           !  Rx Frequency [MHz]
+5000                          !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+-------------------------------- ORBCOMM -----------------------------
+10                            !  Number of Specular Points
+SP2Alpha.ppm                  !  Sprite File Name SP
+137                           !  Rx Frequency [MHz]
+25                            !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+================================ Rx 5 ================================
+5                             !  SC Number Assignment for Rx 5
+2                             !  Number of SoOp Configurations
+-------------------------------- MUOS --------------------------------
+4                             !  Number of Specular Points
+SP1Alpha.ppm                  !  Sprite File Name SP
+370                           !  Rx Frequency [MHz]
+5000                          !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
+-------------------------------- ORBCOMM -----------------------------
+10                            !  Number of Specular Points
+SP2Alpha.ppm                  !  Sprite File Name SP
+137                           !  Rx Frequency [MHz]
+25                            !  Bandwidth of channel [kHz]
+6.3                           !  Antenna Gain Sky-View [dB]
+6.3                           !  Antenna Gain Earth-View [dB]
+1373                          !  Noise Temperature Sky-View [K]
+1373                          !  Noise Temperature Earth-View [k]
