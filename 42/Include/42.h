@@ -54,6 +54,7 @@ EXTERN long NRx;
 EXTERN long NTx;
 EXTERN struct GridType *Grid;
 ///////////////////////////////////////////////////////////////////////////
+
 /* Number of Reference Orbits */
 EXTERN long Norb;
 /* Number of spacecraft */
@@ -158,10 +159,7 @@ EXTERN struct RegionType *Rgn;
 EXTERN long ExecuteCFDStep;
 EXTERN long EndCFD;
 
-#ifdef _ENABLE_SOCKETS_
 EXTERN SOCKET TxSocket,RxSocket;
-#endif
-
 EXTERN long EchoEnabled;
 
 /* Master Random Process */

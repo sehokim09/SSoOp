@@ -32,8 +32,13 @@ GUIFLAG = -D _USE_GUI_
 SHADERFLAG = -D _USE_SHADERS_
 #SHADERFLAG = 
 
+<<<<<<< HEAD
 TIMEFLAG = 
 #TIMEFLAG = -D _USE_SYSTEM_TIME_
+=======
+#TIMEFLAG = 
+TIMEFLAG = -D _USE_SYSTEM_TIME_
+>>>>>>> 42
 
 CFDFLAG = 
 #CFDFLAG = -D _ENABLE_CFD_SLOSH_
@@ -41,8 +46,13 @@ CFDFLAG =
 FFTBFLAG = 
 #FFTBFLAG = -D _ENABLE_FFTB_CODE_
 
+<<<<<<< HEAD
 GSFCFLAG = 
 #GSFCFLAG = -D _USE_GSFC_WATERMARK_
+=======
+#GSFCFLAG = 
+GSFCFLAG = -D _USE_GSFC_WATERMARK_
+>>>>>>> 42
 
 STANDALONEFLAG = 
 #STANDALONEFLAG = -D _AC_STANDALONE_
@@ -51,6 +61,7 @@ NOS3FSWFLAG =
 #NOS3FSWFLAG = -D _ENABLE_NOS3_FSW_
 
 GMSECFLAG =
+<<<<<<< HEAD
 GMSECDIR = 
 GMSECINC = 
 GMSECBIN = 
@@ -60,6 +71,20 @@ GMSECLIB =
 #GMSECINC = -I $(GMSECDIR)include/
 #GMSECBIN = -L $(GMSECDIR)bin/
 #GMSECLIB = -lGMSECAPI
+=======
+#GMSECFLAG = -D _ENABLE_GMSEC_
+ifeq ($(strip $(GMSECFLAG)),)
+   GMSECDIR = 
+   GMSECINC = 
+   GMSECBIN = 
+   GMSECLIB = 
+else
+   GMSECDIR = ~/GMSEC/
+   GMSECINC = -I $(GMSECDIR)include/
+   GMSECBIN = -L $(GMSECDIR)bin/
+   GMSECLIB = -lGMSECAPI
+endif
+>>>>>>> 42
 
 # Basic directories
 HOMEDIR = ./
@@ -71,11 +96,17 @@ SRC = $(PROJDIR)Source/
 KITINC = $(KITDIR)Include/
 KITSRC = $(KITDIR)Source/
 INOUT = $(PROJDIR)InOut/
+<<<<<<< HEAD
 GSFCSRC = $(PROJDIR)/GSFC/Source/
+=======
+GSFCSRC = $(PROJDIR)/GSFC/Source/
+IPCSRC = $(SRC)IPC/
+>>>>>>> 42
 
 #EMBEDDED = -D EMBEDDED_MATLAB
 EMBEDDED = 
 
+<<<<<<< HEAD
 ifneq ($(strip $(EMBEDDED)),)
    MATLABROOT = "C:/Program Files/MATLAB/R2010b/"
    MATLABINC = -I $(MATLABROOT)extern/include/ 
@@ -90,6 +121,8 @@ else
    MATLABSRC = 
 endif
 
+=======
+>>>>>>> 42
 ifeq ($(42PLATFORM),__APPLE__)
    # Mac Macros
    CINC = -I /usr/include
@@ -101,6 +134,7 @@ ifeq ($(42PLATFORM),__APPLE__)
    #SOCKETFLAG = 
    SOCKETFLAG = -D _ENABLE_SOCKETS_
 
+<<<<<<< HEAD
    ifneq ($(strip $(EMBEDDED)),)
       LFLAGS = -bind_at_load -m64 -L$(MATLABROOT)bin/maci64
       LIBS = -framework System -framework Carbon -framework OpenGL -framework GLUT $(MATLABLIB)
@@ -108,6 +142,10 @@ ifeq ($(42PLATFORM),__APPLE__)
       LFLAGS = -bind_at_load
       LIBS = -framework System -framework Carbon -framework OpenGL -framework GLUT 
    endif
+=======
+   LFLAGS = -bind_at_load
+   LIBS = -framework System -framework Carbon -framework OpenGL -framework GLUT 
+>>>>>>> 42
    GUIOBJ = $(OBJ)42GlutGui.o $(OBJ)glkit.o 
    EXENAME = 42
    CC = gcc
@@ -118,8 +156,13 @@ ifeq ($(42PLATFORM),__linux__)
    CINC =
    EXTERNDIR =  
 
+<<<<<<< HEAD
    SOCKETFLAG = 
    #SOCKETFLAG = -D _ENABLE_SOCKETS_
+=======
+   #SOCKETFLAG = 
+   SOCKETFLAG = -D _ENABLE_SOCKETS_
+>>>>>>> 42
 
    ifneq ($(strip $(GUIFLAG)),)
       GUIOBJ = $(OBJ)42GlutGui.o $(OBJ)glkit.o 
@@ -166,10 +209,13 @@ ifeq ($(42PLATFORM),__MSYS__)
       LFLAGS = 
       ARCHFLAG = 
    endif
+<<<<<<< HEAD
    ifneq ($(strip $(EMBEDDED)),)
       LFLAGS = -L $(GLUT)lib/ -m64 -L$(MATLABROOT)bin/win32
       LIBS = -lopengl32 -lglu32 -lfreeglut $(MATLABLIB) 
    endif
+=======
+>>>>>>> 42
    EXENAME = 42.exe
    CC = gcc
 endif
@@ -179,6 +225,7 @@ ifeq ($(strip $(GUIFLAG)),)
    GUIOBJ = 
 endif
 
+<<<<<<< HEAD
 # If not using IPC, don't compile IPC-related files
 ifneq ($(strip $(SOCKETFLAG)),)
    IPCOBJ = $(OBJ)42ipc.o
@@ -186,6 +233,8 @@ else
    IPCOBJ = 
 endif
 
+=======
+>>>>>>> 42
 # If not in FFTB, don't compile FFTB-related files
 ifneq ($(strip $(FFTBFLAG)),)
    FFTBOBJ = $(OBJ)42fftb.o
@@ -193,11 +242,21 @@ else
    FFTBOBJ = 
 endif
 
+<<<<<<< HEAD
+=======
+ifneq ($(strip $(CFDFLAG)),)
+   SLOSHOBJ = $(OBJ)42CfdSlosh.o
+else
+   SLOSHOBJ = 
+endif
+
+>>>>>>> 42
 # If not _AC_STANDALONE_, link AcApp.c in with the rest of 42 
 ifneq ($(strip $(STANDALONEFLAG)),)
    ACOBJ = 
 else
    ACOBJ = $(OBJ)AcApp.o 
+<<<<<<< HEAD
 endif
 
 #ANSIFLAGS = -Wstrict-prototypes -pedantic -ansi -Werror
@@ -217,10 +276,34 @@ ifneq ($(strip $(CFDFLAG)),)
 else
    SLOSHOBJ = 
 endif
+=======
+endif
+
+ifneq ($(strip $(GMSECFLAG)),)
+   GMSECOBJ = $(OBJ)gmseckit.o
+   ACIPCOBJ = $(OBJ)AppReadFromFile.o $(OBJ)AppWriteToGmsec.o $(OBJ)AppReadFromGmsec.o \
+      $(OBJ)AppWriteToSocket.o $(OBJ)AppReadFromSocket.o $(OBJ)AppWriteToFile.o 
+   SIMIPCOBJ = $(OBJ)SimWriteToFile.o $(OBJ)SimWriteToGmsec.o $(OBJ)SimWriteToSocket.o \
+      $(OBJ)SimReadFromFile.o $(OBJ)SimReadFromGmsec.o $(OBJ)SimReadFromSocket.o 
+else
+   GMSECOBJ = 
+   ACIPCOBJ = $(OBJ)AppReadFromFile.o \
+      $(OBJ)AppWriteToSocket.o $(OBJ)AppReadFromSocket.o $(OBJ)AppWriteToFile.o 
+   SIMIPCOBJ = $(OBJ)SimWriteToFile.o $(OBJ)SimWriteToSocket.o \
+      $(OBJ)SimReadFromFile.o $(OBJ)SimReadFromSocket.o 
+endif
+
+42OBJ = $(OBJ)42main.o $(OBJ)42exec.o $(OBJ)42actuators.o $(OBJ)42cmd.o \
+$(OBJ)42dynamics.o $(OBJ)42environs.o $(OBJ)42ephem.o $(OBJ)42fsw.o \
+$(OBJ)42init.o $(OBJ)42ipc.o $(OBJ)42perturb.o $(OBJ)42report.o \
+$(OBJ)42sensors.o \
+$(OBJ)42nos3.o
+>>>>>>> 42
 
 KITOBJ = $(OBJ)dcmkit.o $(OBJ)envkit.o $(OBJ)fswkit.o $(OBJ)geomkit.o \
 $(OBJ)iokit.o $(OBJ)mathkit.o $(OBJ)nrlmsise00kit.o $(OBJ)msis86kit.o \
 $(OBJ)orbkit.o $(OBJ)radbeltkit.o $(OBJ)sigkit.o $(OBJ)sphkit.o $(OBJ)timekit.o
+<<<<<<< HEAD
 
 ifneq ($(strip $(EMBEDDED)),)
    MATLABOBJ = $(OBJ)DetectorFSW.o $(OBJ)OpticsFSW.o
@@ -235,6 +318,27 @@ endif
 
 AcApp : $(OBJ)AcApp.o $(OBJ)dcmkit.o $(OBJ)mathkit.o $(OBJ)fswkit.o $(OBJ)iokit.o
 	$(CC) $(LFLAGS) -o AcApp $(OBJ)AcApp.o $(OBJ)dcmkit.o $(OBJ)mathkit.o $(OBJ)fswkit.o $(OBJ)iokit.o
+=======
+
+ACKITOBJ = $(OBJ)dcmkit.o $(OBJ)mathkit.o $(OBJ)fswkit.o $(OBJ)iokit.o $(OBJ)timekit.o
+
+ACIPCOBJ = $(OBJ)AppReadFromFile.o \
+$(OBJ)AppWriteToSocket.o $(OBJ)AppReadFromSocket.o $(OBJ)AppWriteToFile.o 
+
+#ANSIFLAGS = -Wstrict-prototypes -pedantic -ansi -Werror
+ANSIFLAGS = 
+
+CFLAGS = -Wall -Wshadow -Wno-deprecated -g  $(ANSIFLAGS) $(GLINC) $(CINC) -I $(INC) -I $(KITINC) -I $(KITSRC) $(GMSECINC) -O0 $(ARCHFLAG) $(GUIFLAG) $(SHADERFLAG) $(TIMEFLAG) $(SOCKETFLAG) $(CFDFLAG) $(FFTBFLAG) $(GSFCFLAG) $(GMSECFLAG) $(STANDALONEFLAG) $(NOS3FSWFLAG)
+
+
+##########################  Rules to link 42  #############################
+
+42 : $(42OBJ) $(GUIOBJ) $(SIMIPCOBJ) $(FFTBOBJ) $(SLOSHOBJ) $(KITOBJ) $(ACOBJ) $(GMSECOBJ)
+	$(CC) $(LFLAGS) $(GMSECBIN) -o $(EXENAME) $(42OBJ) $(GUIOBJ) $(FFTBOBJ) $(SLOSHOBJ) $(KITOBJ) $(ACOBJ) $(GMSECOBJ) $(SIMIPCOBJ) $(LIBS) $(GMSECLIB)
+
+AcApp : $(OBJ)AcApp.o $(ACKITOBJ) $(ACIPCOBJ) $(GMSECOBJ)
+	$(CC) $(LFLAGS) -o AcApp $(OBJ)AcApp.o $(ACKITOBJ) $(ACIPCOBJ) $(GMSECOBJ)
+>>>>>>> 42
 
 ####################  Rules to compile objects  ###########################
 
@@ -244,10 +348,17 @@ $(OBJ)42main.o          : $(SRC)42main.c
 $(OBJ)42exec.o          : $(SRC)42exec.c $(INC)42.h
 	$(CC) $(CFLAGS) -c $(SRC)42exec.c -o $(OBJ)42exec.o  
 
+<<<<<<< HEAD
 $(OBJ)42actuators.o : $(SRC)42actuators.c $(INC)42.h $(INC)42fsw.h  $(INC)fswdefines.h $(INC)fswtypes.h
 	$(CC) $(CFLAGS) -c $(SRC)42actuators.c -o $(OBJ)42actuators.o  
 
 $(OBJ)42cmd.o : $(SRC)42cmd.c $(INC)42.h $(INC)42fsw.h  $(INC)fswdefines.h $(INC)fswtypes.h
+=======
+$(OBJ)42actuators.o : $(SRC)42actuators.c $(INC)42.h $(INC)Ac.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(SRC)42actuators.c -o $(OBJ)42actuators.o  
+
+$(OBJ)42cmd.o : $(SRC)42cmd.c $(INC)42.h $(INC)Ac.h $(INC)AcTypes.h
+>>>>>>> 42
 	$(CC) $(CFLAGS) -c $(SRC)42cmd.c -o $(OBJ)42cmd.o  
 
 $(OBJ)42dynamics.o     : $(SRC)42dynamics.c $(INC)42.h 
@@ -259,7 +370,11 @@ $(OBJ)42environs.o  : $(SRC)42environs.c $(INC)42.h
 $(OBJ)42ephem.o     : $(SRC)42ephem.c $(INC)42.h
 	$(CC) $(CFLAGS) -c $(SRC)42ephem.c -o $(OBJ)42ephem.o  
 
+<<<<<<< HEAD
 $(OBJ)42fsw.o       : $(SRC)42fsw.c $(INC)42fsw.h $(INC)fswdefines.h $(INC)fswtypes.h 
+=======
+$(OBJ)42fsw.o       : $(SRC)42fsw.c $(INC)Ac.h $(INC)AcTypes.h 
+>>>>>>> 42
 	$(CC) $(CFLAGS) -c $(SRC)42fsw.c -o $(OBJ)42fsw.o  
 
 $(OBJ)42GlutGui.o        : $(SRC)42GlutGui.c $(INC)42.h $(INC)42GlutGui.h 
@@ -277,7 +392,11 @@ $(OBJ)42perturb.o   : $(SRC)42perturb.c $(INC)42.h
 $(OBJ)42report.o    : $(SRC)42report.c $(INC)42.h 
 	$(CC) $(CFLAGS) -c $(SRC)42report.c -o $(OBJ)42report.o  
 
+<<<<<<< HEAD
 $(OBJ)42sensors.o   : $(SRC)42sensors.c $(INC)42.h $(INC)42fsw.h $(INC)fswdefines.h $(INC)fswtypes.h
+=======
+$(OBJ)42sensors.o   : $(SRC)42sensors.c $(INC)42.h $(INC)Ac.h $(INC)AcTypes.h
+>>>>>>> 42
 	$(CC) $(CFLAGS) -c $(SRC)42sensors.c -o $(OBJ)42sensors.o  
 
 $(OBJ)dcmkit.o      : $(KITSRC)dcmkit.c
@@ -295,6 +414,12 @@ $(OBJ)glkit.o      : $(KITSRC)glkit.c $(KITINC)glkit.h
 $(OBJ)geomkit.o      : $(KITSRC)geomkit.c $(KITINC)geomkit.h 
 	$(CC) $(CFLAGS) -c $(KITSRC)geomkit.c -o $(OBJ)geomkit.o  
 
+<<<<<<< HEAD
+=======
+$(OBJ)gmseckit.o      : $(KITSRC)gmseckit.c $(KITINC)gmseckit.h 
+	$(CC) $(CFLAGS) -c $(KITSRC)gmseckit.c -o $(OBJ)gmseckit.o  
+
+>>>>>>> 42
 $(OBJ)iokit.o      : $(KITSRC)iokit.c 
 	$(CC) $(CFLAGS) -c $(KITSRC)iokit.c -o $(OBJ)iokit.o  
 
@@ -322,18 +447,22 @@ $(OBJ)sphkit.o      : $(KITSRC)sphkit.c
 $(OBJ)timekit.o     : $(KITSRC)timekit.c 
 	$(CC) $(CFLAGS) -c $(KITSRC)timekit.c -o $(OBJ)timekit.o  
 
+<<<<<<< HEAD
 $(OBJ)DetectorFSW.o	: $(MATLABSRC)DetectorFSW.c
 	$(CC) $(CFLAGS) -c $(MATLABSRC)DetectorFSW.c -o $(OBJ)DetectorFSW.o
 
 $(OBJ)OpticsFSW.o	: $(MATLABSRC)OpticsFSW.c
 	$(CC) $(CFLAGS) -c $(MATLABSRC)OpticsFSW.c -o $(OBJ)OpticsFSW.o
 
+=======
+>>>>>>> 42
 $(OBJ)42CfdSlosh.o      : $(GSFCSRC)42CfdSlosh.c $(INC)42.h   
 	$(CC) $(CFLAGS) -c $(GSFCSRC)42CfdSlosh.c -o $(OBJ)42CfdSlosh.o  
 
 $(OBJ)42fftb.o         : $(GSFCSRC)42fftb.c $(INC)42.h   
 	$(CC) $(CFLAGS) -c $(GSFCSRC)42fftb.c -o $(OBJ)42fftb.o  
 
+<<<<<<< HEAD
 $(OBJ)AcApp.o          : $(SRC)AcApp.c $(INC)42fsw.h
 	$(CC) $(CFLAGS) -c $(SRC)AcApp.c -o $(OBJ)AcApp.o
 
@@ -343,6 +472,50 @@ $(OBJ)42nos3.o         : $(SRC)42nos3.c
 $(OBJ)SoOp.o           : $(SRC)SoOp.c $(INC)42.h
 	$(CC) $(CFLAGS) -c $(SRC)SoOp.c -o $(OBJ)SoOp.o
     
+=======
+$(OBJ)AcApp.o          : $(SRC)AcApp.c $(INC)Ac.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(SRC)AcApp.c -o $(OBJ)AcApp.o
+
+$(OBJ)SimWriteToFile.o  : $(IPCSRC)SimWriteToFile.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)SimWriteToFile.c -o $(OBJ)SimWriteToFile.o
+
+$(OBJ)SimWriteToGmsec.o  : $(IPCSRC)SimWriteToGmsec.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)SimWriteToGmsec.c -o $(OBJ)SimWriteToGmsec.o
+
+$(OBJ)SimWriteToSocket.o  : $(IPCSRC)SimWriteToSocket.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)SimWriteToSocket.c -o $(OBJ)SimWriteToSocket.o
+
+$(OBJ)SimReadFromFile.o  : $(IPCSRC)SimReadFromFile.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)SimReadFromFile.c -o $(OBJ)SimReadFromFile.o
+
+$(OBJ)SimReadFromGmsec.o  : $(IPCSRC)SimReadFromGmsec.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)SimReadFromGmsec.c -o $(OBJ)SimReadFromGmsec.o
+
+$(OBJ)SimReadFromSocket.o  : $(IPCSRC)SimReadFromSocket.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)SimReadFromSocket.c -o $(OBJ)SimReadFromSocket.o
+
+$(OBJ)AppWriteToFile.o  : $(IPCSRC)AppWriteToFile.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)AppWriteToFile.c -o $(OBJ)AppWriteToFile.o
+
+$(OBJ)AppWriteToGmsec.o  : $(IPCSRC)AppWriteToGmsec.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)AppWriteToGmsec.c -o $(OBJ)AppWriteToGmsec.o
+
+$(OBJ)AppWriteToSocket.o  : $(IPCSRC)AppWriteToSocket.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)AppWriteToSocket.c -o $(OBJ)AppWriteToSocket.o
+
+$(OBJ)AppReadFromFile.o  : $(IPCSRC)AppReadFromFile.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)AppReadFromFile.c -o $(OBJ)AppReadFromFile.o
+
+$(OBJ)AppReadFromGmsec.o  : $(IPCSRC)AppReadFromGmsec.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)AppReadFromGmsec.c -o $(OBJ)AppReadFromGmsec.o
+
+$(OBJ)AppReadFromSocket.o  : $(IPCSRC)AppReadFromSocket.c $(INC)42.h $(INC)AcTypes.h
+	$(CC) $(CFLAGS) -c $(IPCSRC)AppReadFromSocket.c -o $(OBJ)AppReadFromSocket.o
+
+$(OBJ)42nos3.o         : $(SRC)42nos3.c 
+	$(CC) $(CFLAGS) -c $(SRC)42nos3.c -o $(OBJ)42nos3.o  
+
+>>>>>>> 42
 ########################  Miscellaneous Rules  ############################
 clean :
 ifeq ($(42PLATFORM),_WIN32)

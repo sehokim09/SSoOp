@@ -217,7 +217,9 @@ void ManageBoundingBoxes(void)
 void ZeroFrcTrq(void)
 {
       struct SCType *S;
-      long Isc,Ib;
+      struct BodyType *B;
+      struct FlexNodeType *FN;
+      long Isc,Ib,In;
 
       for(Isc=0;Isc<Nsc;Isc++) {
          S = &SC[Isc];
@@ -225,12 +227,27 @@ void ZeroFrcTrq(void)
          S->Frc[1] = 0.0;
          S->Frc[2] = 0.0;
          for(Ib=0;Ib<S->Nb;Ib++) {
-            S->B[Ib].Frc[0] = 0.0;
-            S->B[Ib].Frc[1] = 0.0;
-            S->B[Ib].Frc[2] = 0.0;
-            S->B[Ib].Trq[0] = 0.0;
-            S->B[Ib].Trq[1] = 0.0;
-            S->B[Ib].Trq[2] = 0.0;
+            B = &S->B[Ib];
+            B->Frc[0] = 0.0;
+            B->Frc[1] = 0.0;
+            B->Frc[2] = 0.0;
+            B->Trq[0] = 0.0;
+            B->Trq[1] = 0.0;
+            B->Trq[2] = 0.0;
+         }
+         if (S->FlexActive) {
+            for(Ib=0;Ib<S->Nb;Ib++) {
+               B = &S->B[Ib];
+               for(In=0;In<B->NumFlexNodes;In++) {
+                 FN = &B->FlexNode[In];
+                 FN->Frc[0] = 0.0;
+                 FN->Frc[1] = 0.0;
+                 FN->Frc[2] = 0.0;
+                 FN->Trq[0] = 0.0;
+                 FN->Trq[1] = 0.0;
+                 FN->Trq[2] = 0.0;
+               }
+            }
          }
       }
 }
@@ -246,19 +263,15 @@ long SimStep(void)
       if (First) {
          First = 0;
          SimTime = 0.0;
-
          #if defined _USE_SYSTEM_TIME_
-         	 printf("USE SYSTEM TIME\n");
             /* First call just initializes timer */
             RealRunTime(&TotalRunTime,DTSIM);
          #endif
-
          ManageFlags();
 
          Ephemerides(); /* Sun, Moon, Planets, Spacecraft, Useful Auxiliary Frames */
 
          ZeroFrcTrq();
-
          for(Isc=0;Isc<Nsc;Isc++) {
             S = &SC[Isc];
             if (S->Exists) {
@@ -278,7 +291,6 @@ long SimStep(void)
       }
 
       ReportProgress();
-
       ManageFlags();
 
       /* Read and Interpret Command Script File */
@@ -292,7 +304,7 @@ long SimStep(void)
       SimComplete = AdvanceTime();
 
       /* Update SC Bounding Boxes occasionally */
-      //ManageBoundingBoxes();
+      ManageBoundingBoxes();
 
       #ifdef _ENABLE_SOCKETS_
          InterProcessComm(); /* Send and receive from external processes */
@@ -348,11 +360,9 @@ int exec(int argc,char **argv)
       }
       CmdInterpreter();
       #ifdef _ENABLE_SOCKETS_
-      	  printf("SOCKET\n");
          InitInterProcessComm();
       #endif
       #ifdef _USE_GUI_
-     	  printf("GUI\n");
          if (GLEnable) HandoffToGui(argc,argv);
          else {
             while(!Done) {
@@ -360,7 +370,6 @@ int exec(int argc,char **argv)
             }
          }
       #else
-         printf("NO GUI\n");
          InitFOVs();
          RepeatGroundTrack(&Orb[0]);
          /* Crunch numbers till done */

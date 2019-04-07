@@ -1564,8 +1564,10 @@ void DrawNearAuxObjects(void)
                      if (MAGV(S->AC.bvb) > 0.0)
                         DrawVector(S->AC.bvb,"Bac","uT",BvbColor,
                            1.15*AxisLength,1.0E6,FALSE);
-                     /*DrawVector(S->AC.Hvb,"Hac","Nms",HvbColor,AxisLength,
-                        1.0,FALSE);*/
+                     if (MAGV(S->AC.Hvb) > 0.0)
+                        DrawVector(S->AC.Hvb,"Hac","Nms",HvbColor,
+                           1.15*AxisLength,
+                           1.0,FALSE);
                      glPopMatrix();
                   }
                }
@@ -2166,7 +2168,7 @@ void DrawMap(void)
       GLfloat GroundStationColor[4] = {0.7,0.5,0.1,1.0};
       struct OrbitType *Eph;
       struct SCType *S;
-//////////////////////////////////////////////////////////// added //////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// added //////////////////////////////////////////////////////////////
       struct SoOpType *SoOp;
       long IRx;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5419,7 +5421,6 @@ void InitMapWindow(void)
           }
       }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
       RockballMapTexTag = PpmToTexTag("./World/","Rockball.ppm",3,GL_REPEAT);
       IceballMapTexTag = PpmToTexTag("./World/","Iceball.ppm",3,GL_REPEAT);
       for(Iw=MERCURY;Iw<NWORLD;Iw++) {

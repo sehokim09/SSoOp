@@ -978,11 +978,11 @@ void ContactFrcTrq(struct SCType *S)
       }
 
 /* .. Contact with other S/C */
-      for(Isc=S->Tag+1;Isc<Nsc;Isc++) {
+      for(Isc=S->ID+1;Isc<Nsc;Isc++) {
          Sc = &SC[Isc];
          /* Cheap S/Sc proximity checks */
          if (!Sc->Exists) continue;
-         if (Sc->Tag == S->Tag) continue;
+         if (Sc->ID == S->ID) continue;
          if (Orb[Sc->RefOrb].World != O->World) continue;
          for(i=0;i<3;i++) dx[i] = S->PosN[i] - Sc->PosN[i];
          if (MAGV(dx) > 1.2*(S->BBox.radius + Sc->BBox.radius)) continue;
@@ -1026,7 +1026,7 @@ void EnvTrq(struct SCType *S)
 
       if (E->First) {
          E->First = 0;
-         sprintf(envfilename,"EnvTrq%02li.42",S->Tag);
+         sprintf(envfilename,"EnvTrq%02li.42",S->ID);
          E->envfile = FileOpen(InOutPath,envfilename,"w");
       }
 
@@ -1051,9 +1051,9 @@ void EnvTrq(struct SCType *S)
       MxV(CSN,SumTrqN,TrqS);
 
       for (i=0;i<3;i++) E->Hs[i] += TrqS[i]*DTSIM;
-/*
+
       if (OutFlag) {
-         // Express Trq, H in B0 frame
+         /* Express Trq, H in B0 frame */
          MxV(S->B[0].CN,SumTrqN,TrqB);
          MTxV(CSN,E->Hs,Hn);
          MxV(S->B[0].CN,Hn,Hb);
@@ -1063,7 +1063,7 @@ void EnvTrq(struct SCType *S)
                  TrqB[0],TrqB[1],TrqB[2],
                  Hb[0],Hb[1],Hb[2]);
       }
-*/
+
 }
 /**********************************************************************/
 /*  This file contains perturbation torque and force models to apply  */
@@ -1075,16 +1075,16 @@ void Perturbations(struct SCType *S)
 {
 
 /* .. Gravity-Gradient Torques */
-      if (GGActive && S->Tag==0) GravGradFrcTrq(S);
+      if (GGActive) GravGradFrcTrq(S);
 
 /* .. Gravity Perturbation Forces */
-      if (GravPertActive && S->Tag==0) GravPertForce(S);
+      if (GravPertActive) GravPertForce(S);
 
 /* .. Aerodynamic Forces and Torques */
-      if (AeroActive && S->Tag==0) AeroFrcTrq(S);
+      if (AeroActive) AeroFrcTrq(S);
 
 /* .. Solar Radiation Pressure Forces and Torques */
-      if (SolPressActive && S->Tag==0) SolPressFrcTrq(S);
+      if (SolPressActive) SolPressFrcTrq(S);
 
 /* .. Reaction Wheel Static and Dynamic Imbalance Torques */
       if (RwaImbalanceActive) RwaImbalance(S);

@@ -1,6 +1,7 @@
 <<<<<<<<<<<<<<< 42: InterProcess Comm Configuration File >>>>>>>>>>>>>>>>
 RX                                      ! IPC Mode (OFF,TX,RX,WRITEFILE,READFILE)
 CLIENT                                  ! Socket Role (SERVER,CLIENT,GMSEC_CLIENT)
+<<<<<<< HEAD
 localhost     101010                    ! Server Host Name, Port 
 TRUE                                    ! Allow Blocking (i.e. wait on RX)
 TRUE                                    ! Echo to stdout
@@ -20,3 +21,8 @@ MAGVEC                                  ! Magnetic Field Vector
 ANGMOM                                  ! Angular Momentum Vector
 JOINT                                   ! Joint ID, Angles, Trns
 HWHL                                    ! Wheel ID, Momentum
+=======
+localhost     42042                     ! Server Host Name, Port 
+TRUE                                    ! Allow Blocking (i.e. wait on RX)
+TRUE                                    ! Echo to stdout
+>>>>>>> 42

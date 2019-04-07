@@ -262,21 +262,6 @@
 #define NOMINAL 1
 #define USER_DEFINED 2
 
-/* Mnemonics for InterProcess Comm */
-#define MNEM_TIME 0
-#define MNEM_SC 1
-#define MNEM_ORBPOS_N 2
-#define MNEM_ORBVEL_N 3
-#define MNEM_POS_R 4
-#define MNEM_VEL_R 5
-#define MNEM_WBN 6
-#define MNEM_QBN 7
-#define MNEM_SVB 8
-#define MNEM_BVB 9
-#define MNEM_HVB 10
-#define MNEM_JOINT 11
-#define MNEM_HWHL 12
-
 /* Modes for InterProcess Comm */
 #define IPC_OFF 0
 #define IPC_TX 1

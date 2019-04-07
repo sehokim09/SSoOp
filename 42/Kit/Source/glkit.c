@@ -33,7 +33,6 @@
 void DrawBitmapString(void *font, const char *string)
 {
       const char *c;
-
       for(c=string; *c != '\0'; c++) {
          glutBitmapCharacter(font, *c);
       }

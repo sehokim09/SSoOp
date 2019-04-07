@@ -137,6 +137,7 @@ TRUE  TRUE                         !  Draw Near Field, Draw Far Field
 
 
 
+
 --------------------------------------------------------------------
 "VECTOR"                           !  Label
 0   4.0                            !  Number of Sides, Length [m]

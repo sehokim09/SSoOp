@@ -21,7 +21,7 @@ USER_DEFINED                    !  Model Date Interpolation for Solar Flux and A
 IGRF                            !  Magfield (NONE,DIPOLE,IGRF)
 8   8                           !  IGRF Degree and Order (<=10)
 8   8                           !  Earth Gravity Model N and M (<=18)
-8   0                           !  Mars Gravity Model N and M (<=18)
+2   0                           !  Mars Gravity Model N and M (<=18)
 2   0                           !  Luna Gravity Model N and M (<=18)
 TRUE   TRUE                   !  Aerodynamic Forces & Torques (Shadows)
 TRUE                           !  Gravity Gradient Torques
