@@ -842,6 +842,7 @@ void ECEFToWGS84(double p[3], double *glat, double *glong, double *alt)
       double a = 6378137.0;
 //      double f = 1.0/298.257222101;
       double f = 1.0/298.257223563;
+      double b = a*(1.0-f);
       double e2 = f*(2.0-f);
       double ep2 = f*(2.0-f)/(1.0-f)/(1.0-f);
       double r,E2,F,G,C,S,P,Q,r0,U,V,Z0;

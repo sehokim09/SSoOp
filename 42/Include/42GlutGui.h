@@ -28,11 +28,7 @@
 ** #endif
 */
 
-<<<<<<< HEAD
 #define CAM_MENU_SIZE 24 // 18 -> 24
-=======
-#define CAM_MENU_SIZE 18
->>>>>>> 42
 #define N_AXES 0
 #define L_AXES 1
 #define F_AXES 2

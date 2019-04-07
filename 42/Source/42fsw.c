@@ -15,8 +15,10 @@
 #include "42.h"
 
 void AcFsw(struct AcType *AC);
+#ifdef _ENABLE_SOCKETS_
 void WriteToSocket(SOCKET Socket);
 void ReadFromSocket(SOCKET Socket);
+#endif
 
 
 /* #ifdef __cplusplus

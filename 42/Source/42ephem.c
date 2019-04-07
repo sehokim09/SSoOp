@@ -767,14 +767,11 @@ void Ephemerides_Earth(void)
 	struct OrbitType *Eph;
 	struct OrbitType *O;
 	struct WorldType *W;
-	struct RegionType *R;
 	struct SCType *S;
 	double svh[3],p,pvn[3],SoP,Rp,GMST;
 	double r1[3],rh[3],vh[3];
-	double ptn[10][3],vtn[10][3],ptw[3];
 	double ZAxis[3] = {0.0,0.0,1.0};
-	struct LagrangeSystemType *LS;
-	long i,j,Ip,Im,Iw,Imb,Ir,Isc;
+	long i,j,Iw,Isc;
 	long Iorb;
 
 /* .. Update Julian Day, etc */

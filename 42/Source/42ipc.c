@@ -35,10 +35,12 @@ int Port;
 char HostName[80];
 FILE *statefile;
 
+#ifdef _ENABLE_SOCKETS_
 void WriteToFile(FILE *StateFile);
 void WriteToSocket(SOCKET Socket);
 void ReadFromFile(FILE *StateFile);
 void ReadFromSocket(SOCKET Socket);
+#endif
 
 /*********************************************************************/
 void InitInterProcessComm(void)

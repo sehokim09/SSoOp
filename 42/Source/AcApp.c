@@ -18,13 +18,14 @@
 ** using namespace Kit;
 ** #endif
 */
-
+#ifdef _ENABLE_SOCKETS_
 extern void WriteToFile(FILE *StateFile, struct AcType *AC);
 extern void WriteToGmsec(struct AcType *AC);
 extern void WriteToSocket(SOCKET Socket, struct AcType *AC);
 extern void ReadFromFile(FILE *StateFile, struct AcType *AC);
 extern void ReadFromGmsec(struct AcType *AC);
 extern void ReadFromSocket(SOCKET Socket, struct AcType *AC);
+#endif
 
 #ifdef _AC_STANDALONE_
 /**********************************************************************/

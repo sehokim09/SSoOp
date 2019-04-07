@@ -151,8 +151,6 @@ void GyroReport(void)
       
 }
 /*********************************************************************/
-<<<<<<< HEAD
-
 // add new function ////
 void CmdReport(void)
 {
@@ -212,27 +210,19 @@ void WGS84Report(double PosWT1[3], double PosWT2[3], double PosWR[3])
 ////////////////////////
 
 
-=======
->>>>>>> 42
 void Report(void)
 {
       static FILE *timefile,*AbsTimeFile;
       static FILE **xfile, **ufile, **xffile, **uffile;
       static FILE **ConstraintFile;
-<<<<<<< HEAD
       static FILE *PosNfile,*VelNfile,*qbnfile,*wbnfile /*added*/, *qbnfile2, *wbnfile2, *qbnfile3, *wbnfile3/**/;
       static FILE *PosWfile,*VelWfile, /*added*/ *PosNT1file, *PosNT2file, *PosWT1file, *PosWT2file; ///
-=======
-      static FILE *PosNfile,*VelNfile,*qbnfile,*wbnfile;
-      static FILE *PosWfile,*VelWfile;
->>>>>>> 42
       static FILE *PosRfile,*VelRfile;
       static FILE *Hvnfile,*KEfile;
       static FILE *RPYfile;
       static FILE *Hwhlfile;
       static FILE *MTBfile;
       static FILE *ProjAreaFile;
-<<<<<<< HEAD
 ////////////////////////////////////////////////// added ///////////////////////////////////////////////
       static FILE *EclipseFile;
       static FILE *altFile;
@@ -249,19 +239,13 @@ void Report(void)
       long *ValidSpNum;
       double zerovec[3] = {0.0, 0.0, 0.0};
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-=======
->>>>>>> 42
       static char First = TRUE;
       long Isc,i;
       struct DynType *D;
       double CBL[3][3],Roll,Pitch,Yaw;
       double PosW[3],VelW[3],PosR[3],VelR[3];
       char s[40];
-<<<<<<< HEAD
    //   double ZAxis[3] = {0.0,0.0,1.0};
-=======
-      //double ZAxis[3] = {0.0,0.0,1.0};
->>>>>>> 42
 
       if (First) {
          First = FALSE;
@@ -292,11 +276,8 @@ void Report(void)
             }
          }
          PosNfile = FileOpen(InOutPath,"PosN.42","w");
-<<<<<<< HEAD
          PosNT1file = FileOpen(InOutPath,"PosNT1.42","w");
          PosNT2file = FileOpen(InOutPath,"PosNT2.42","w");
-=======
->>>>>>> 42
          VelNfile = FileOpen(InOutPath,"VelN.42","w");
          PosWfile = FileOpen(InOutPath,"PosW.42","w");
          VelWfile = FileOpen(InOutPath,"VelW.42","w");
@@ -310,7 +291,6 @@ void Report(void)
          RPYfile = FileOpen(InOutPath,"RPY.42","w");
          Hwhlfile = FileOpen(InOutPath,"Hwhl.42","w");
          MTBfile = FileOpen(InOutPath,"MTB.42","w");
-<<<<<<< HEAD
 //////////////////////////////////////////////////////////////// Added//////////////////////////////////////////////////////
          qbnfile2 = FileOpen(InOutPath,"qbn2.42","w");
          wbnfile2 = FileOpen(InOutPath,"wbn2.42","w");
@@ -329,10 +309,6 @@ void Report(void)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       }
-=======
-      }
-
->>>>>>> 42
       if (OutFlag) {
          fprintf(timefile,"%lf\n",SimTime);
          fprintf(AbsTimeFile,"%lf\n",AbsTime);
@@ -364,7 +340,6 @@ void Report(void)
                SC[0].VelN[0],SC[0].VelN[1],SC[0].VelN[2]);
             MxV(World[EARTH].CWN,SC[0].PosN,PosW);
             MxV(World[EARTH].CWN,SC[0].VelN,VelW);
-<<<<<<< HEAD
             fprintf(PosWfile,"%18.12le %18.12le %18.12le\n",
                PosW[0],PosW[1],PosW[2]);
             fprintf(VelWfile,"%18.12le %18.12le %18.12le\n",
@@ -372,12 +347,6 @@ void Report(void)
 //////////////////////////////// added /////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////
-=======
-            fprintf(PosWfile,"%18.12le %18.12le %18.12le ",
-               PosW[0],PosW[1],PosW[2]);
-            fprintf(VelWfile,"%18.12le %18.12le %18.12le ",
-               VelW[0],VelW[1],VelW[2]);
->>>>>>> 42
             MxV(Rgn[Orb[SC[0].RefOrb].Region].CN,SC[0].PosR,PosR);
             MxV(Rgn[Orb[SC[0].RefOrb].Region].CN,SC[0].VelR,VelR);
             fprintf(PosRfile,"%le %le %le\n",
@@ -391,7 +360,6 @@ void Report(void)
             fprintf(Hvnfile,"%18.12le %18.12le %18.12le\n",
                SC[0].Hvn[0],SC[0].Hvn[1],SC[0].Hvn[2]);
             fprintf(KEfile,"%18.12le\n",FindTotalKineticEnergy(&SC[0]));
-<<<<<<< HEAD
        //     fprintf(ProjAreaFile,"%18.12le %18.12le\n",
        //        FindTotalProjectedArea(&SC[0],ZAxis),
        //        FindTotalUnshadedProjectedArea(&SC[0],ZAxis));
@@ -509,21 +477,7 @@ void Report(void)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-=======
-            //fprintf(ProjAreaFile,"%18.12le %18.12le\n",
-            //   FindTotalProjectedArea(&SC[0],ZAxis),
-            //   FindTotalUnshadedProjectedArea(&SC[0],ZAxis));
-            MxMT(SC[0].B[0].CN,SC[0].CLN,CBL);
-            C2A(123,CBL,&Roll,&Pitch,&Yaw);
-            fprintf(RPYfile,"%lf %lf %lf\n",Roll*R2D,Pitch*R2D,Yaw*R2D);
-            for(i=0;i<SC[0].Nw;i++) fprintf(Hwhlfile,"%lf ",SC[0].Whl[i].H);
-            fprintf(Hwhlfile,"\n");
-            fprintf(MTBfile,"%lf %lf %lf\n",SC[0].MTB[0].M,SC[0].MTB[1].M,SC[0].MTB[2].M);
-            
-            //MagReport();
-            //GyroReport();
 
->>>>>>> 42
          }
 
       }

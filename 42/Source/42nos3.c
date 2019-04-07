@@ -126,7 +126,7 @@ static void InitializeTimeNode(void)
         exit(1);
     }
     atexit(ReleaseHandle); /* Release the handle to the shared object library at exit */
-
+/*
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic"
     NE_create_bus2 = (NE_Bus *(*)(const char *, const char *))dlsym(NOSHandle, "NE_create_bus2");
@@ -141,7 +141,7 @@ static void InitializeTimeNode(void)
         printf("NOS3Time error:  %s\n", error);
         exit(1);
     }
-
+*/
     Bus = NE_create_bus2(BusName, ConnectionString);
     return;
 }

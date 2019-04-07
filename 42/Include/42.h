@@ -159,7 +159,9 @@ EXTERN struct RegionType *Rgn;
 EXTERN long ExecuteCFDStep;
 EXTERN long EndCFD;
 
+#ifdef _ENABLE_SOCKETS_
 EXTERN SOCKET TxSocket,RxSocket;
+#endif
 EXTERN long EchoEnabled;
 
 /* Master Random Process */

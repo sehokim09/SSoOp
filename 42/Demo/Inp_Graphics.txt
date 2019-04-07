@@ -40,6 +40,12 @@ FALSE "Truth Vectors"              !  Show Truth Vectors
 FALSE "FSW Vectors"                !  Show FSW Vectors
 TRUE  "Milky Way"                  !  Show Milky Way
 FALSE "Fermi Sky"                  !  Show Fermi Sky
+TRUE  "MUOS"                       !  Show MUOS
+FALSE  "ORBCOMM"                    !  Show ORBCOMM
+FALSE  "GPS"                    !  Show GPS
+TRUE  "Specular Point 1"           !  Show Specular Point1
+FALSE  "Specular Point 2"           !  Show Specular Point2
+FALSE  "Specular Point 3"           !  Show Specular Point3
 ******************************* MAP *********************************
 "42 Map"                           ! Map Title [delimited by "]
 512  256                           !  Width, Height [pixels]
